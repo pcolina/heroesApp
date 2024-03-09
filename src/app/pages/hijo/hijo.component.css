@@ -1,0 +1,6 @@
+.hijo {
+  background-color: rgb(176, 175, 175);
+  margin: 0 10px; /* Ajusta el valor del margen según sea necesario */
+  border-radius: 8px; /* Ajusta el valor del radio según sea necesario */
+  padding: 10px; /* Ajusta el valor del relleno según sea necesario */
+}

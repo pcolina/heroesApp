@@ -1,0 +1,30 @@
+<section class="margin">
+  <h1>{{ title }}</h1>
+  <hr />
+
+  Heroes a Seleccionar : {{ numHeroes }}
+  <br />
+  <div class="mt-3">
+    <button (click)="sumar()">Incrementar</button>
+    <button (click)="restar()">Decrementear</button>
+  </div>
+
+  <div class="mt-3">
+    <app-hijo
+      [numHeroes]="numHeroes"
+      (salida)="pintarResultado($event)"
+    ></app-hijo>
+  </div>
+
+  <div *ngIf="salida > 0; else noResultados">
+    <div [ngSwitch]="salida">
+      <div *ngSwitchCase="1">{{ salida }} Heroe ya va de camino</div>
+      <div *ngSwitchDefault>{{ salida }} Heroes ya van de camino</div>
+    </div>
+  </div>
+
+  <ng-template #noResultados> No hay heroes seleccionados </ng-template>
+
+  <div *ngIf="false">hola!!!</div>
+  <br /><br /><br />
+</section>

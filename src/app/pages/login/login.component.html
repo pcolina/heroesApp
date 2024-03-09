@@ -1,0 +1,98 @@
+<!-- 1 PASO <div class="d-flex row align-items-center vh-100">
+  <div class="login text-center mx-auto">
+    <h2>Iniciar Sesión</h2>
+    <div class="form-group">
+      <label for="username">Usuario:</label>
+      <input
+        type="text"
+        id="user"
+        class="form-control"
+        placeHolder="usuario"
+       
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" class="form-control" />
+    </div>
+    <button class="btn btn-secondary mt-5">Iniciar Sesión</button>
+  </div>
+</div> -->
+
+<!-- name="username"
+autocomplete="off" -->
+
+<!-- 2 formulario por template <form autocomplete ='off' (ngSubmit)="guardar(forma)" #foma="ngForm"></form> -->
+<!-- <form autocomplete="off" (ngSubmit)="guardar(forma)" #forma="ngForm">
+  <div class="d-flex row align-items-center vh-100">
+    <div class="login text-center mx-auto">
+      <h2>Iniciar Sesión</h2>
+      <div class="form-group">
+        <label for="username">Usuario:</label>
+        <input
+          type="text"
+          id="user"
+          class="form-control"
+          [class.is-invalid]="nombre.invalid && nombre.touched"
+          [(ngModel)]="user.username"
+          placeHolder="usuario"
+          name="username"
+          autocomplete="off"
+          required
+          pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
+          #nombre="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input
+          type="password"
+          class="form-control"
+          #pass="ngModel"
+          [class.is-invalid]="pass.invalid && pass.touched"
+          [(ngModel)]="user.pass"
+        />
+      </div>
+      <button class="btn btn-secondary mt-5">Iniciar Sesión</button>
+    </div>
+  </div>
+</form> -->
+
+<form [formGroup]="loginForm" autocomplete="off">
+  <div class="d-flex row align-items-center vh-100">
+    <div class="login text-center mx-auto">
+      <h2>Iniciar Sesión</h2>
+      <div class="form-group">
+        <label for="username">Usuario:</label>
+        <input
+          type="text"
+          id="userNew"
+          class="form-control"
+          placeHolder="usuario"
+          formControlName="name"
+        />
+        <!-- <span
+          *ngIf="loginForm.controls['name'].getError('required')"
+          class="form-text text-danger"
+          >Este campo es obligatorio</span
+        > -->
+        <span *ngIf="isInvalidField('name')" class="form-text text-danger">
+          {{ getFieldError("name") }}
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" class="form-control" formControlName="pass" />
+        <span *ngIf="isInvalidField('pass')" class="form-text text-danger">
+          {{ getFieldError("pass") }}
+        </span>
+        <!-- <div *ngIf="loginForm.get('pass')?.hasError('pattern')">
+          La contraseña debe contener al menos un número.
+        </div> -->
+      </div>
+      <button class="btn btn-secondary mt-5 mb-3" (click)="login()">
+        Iniciar Sesión
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,30 @@
+<div
+  *ngIf="isOpen"
+  class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+  style="width: 280px; margin-top: 60px; height: 100%"
+>
+  <div>
+    <svg class="bi pe-none me-2" width="40" height="32">
+      <use xlink:href="#bootstrap" />
+    </svg>
+    <span class="fs-4">Sidebar</span>
+    <a class="closebtn" (click)="close()">×</a>
+  </div>
+  <hr />
+
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+      <i class="fas fa-people-arrows"></i>
+      <a [routerLink]="['/basico']" routerLinkActive="active"> Básico </a>
+    </li>
+    <li>
+      <i class="fab fa-pied-piper-pp"></i>
+      <a [routerLink]="['/pipes']" routerLinkActive="active"> Pipes </a>
+    </li>
+    <li>
+      <i class="fas fa-user-shield"></i>
+      <a [routerLink]="['/heroes']" routerLinkActive="active"> Heroes </a>
+    </li>
+  </ul>
+  <ul class="nav nav-pills flex-column mb-auto"></ul>
+</div>

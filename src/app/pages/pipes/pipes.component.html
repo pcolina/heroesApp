@@ -1,0 +1,89 @@
+<div class="container">
+  <p>Pipes for transform values ;)</p>
+
+  <h4>Async</h4>
+  <div><code>observable|async</code>: Time: {{ time | async }}</div>
+  <h4>Date</h4>
+  <div><code>today | date</code>: {{ today | date }}</div>
+  <div>
+    <code>today | date:'fullDate'</code>: {{ today | date : "fullDate" }}
+  </div>
+  <div>
+    <code>today | date:'h:mm a z'</code>: {{ today | date : "h:mm a z" }}
+  </div>
+  <h4>Currency</h4>
+  <!--output '$0.26'-->
+  <div><code>number|currency</code>: {{ currencyNumber | currency }}</div>
+  <!--output 'CA$0.26'-->
+  <div>
+    <code>number|currency:'CAD'</code>: {{ currencyNumber | currency : "EUR" }}
+  </div>
+  <!--output 'CAD0.26'-->
+  <div>
+    <code>number|currency:'CAD':'code'</code>:
+    {{ currencyNumber | currency : "EUR" : "code" }}
+  </div>
+  <!--output 'CA$0,001.35'-->
+  <div>
+    <code>number|currency:'CAD':'symbol':'4.2-2'</code>:
+    {{ currencyNumber | currency : "EUR" : "symbol" : "4.2-2" }}
+  </div>
+  <!--output '$0,001.35'-->
+  <div>
+    <code>number|currency:'CAD':'symbol-narrow':'4.2-2'</code>:
+    {{ currencyNumber | currency : "EUR" : "symbol-narrow" : "4.2-2" }}
+  </div>
+  <h4>Number</h4>
+  <div><code>pi | number</code>: {{ pi | number }}</div>
+  <div><code>pi | number:'1.1-8'</code>: {{ pi | number : "1.1-8" }}</div>
+  <h4>Percent</h4>
+  <div><code>number | percent</code>: {{ currencyNumber | percent }}</div>
+  <div>
+    <code>number | percent:'4.1-8'</code>:
+    {{ currencyNumber | percent : "4.1-8" }}
+  </div>
+  <h4>String</h4>
+  <div><code>value | lowercase</code>: {{ message | lowercase }}</div>
+  <div><code>value | uppercase </code>: {{ message | uppercase }}</div>
+  <div><code>value | titlecase</code>: {{ message | titlecase }}</div>
+  <h4>JSON</h4>
+  <div><code>object | json</code>: {{ jsonObject | json }}</div>
+  <div>
+    <code>item.key</code>
+    <div *ngFor="let item of jsonObject | keyvalue">{{ item.key }}</div>
+  </div>
+
+  <h4>i18n</h4>
+  <div id="prural">
+    <code>valor | i18nPlural</code>:
+    {{
+      numMensajes
+        | i18nPlural
+          : {
+              "=0": "No hay mensajes.",
+              "=1": "1 mensaje.",
+              other: "# mensajes."
+            }
+    }}
+    <button (click)="sumar(1)">sumar</button>
+    <button (click)="sumar(-1)">restar</button>
+  </div>
+
+  <div id="select">
+    <p>
+      {{
+        language
+          | i18nSelect
+            : {
+                en: "Hello!",
+                es: "¡Hola!",
+                fr: "Bonjour!",
+                default: "Greetings!"
+              }
+      }}
+      <button (click)="cambioIdioma('es')">es</button>
+      <button (click)="cambioIdioma('en')">en</button>
+      <button (click)="cambioIdioma('fr')">fr</button>
+    </p>
+  </div>
+</div>

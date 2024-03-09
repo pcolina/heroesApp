@@ -1,0 +1,16 @@
+<div class="hijo">
+  <p>¡Hola, {{ nombre }}</p>
+
+  <ng-container *ngIf="heroesSelected.length === 0">
+    Selecciona algún heroe para enviar a luchar contra el mal
+  </ng-container>
+
+  <ng-container *ngIf="this.heroesSelected.length > 0">
+    tenemos
+    {{ numHeroes | i18nPlural : { "=1": " # heroe", other: "# heroes" } }}
+    disponibles
+
+    <div *ngFor="let heroe of heroesSelected">- {{ heroe }}</div>
+    <button (click)="devolver()">Enviar a luchar</button>
+  </ng-container>
+</div>

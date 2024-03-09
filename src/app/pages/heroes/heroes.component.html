@@ -1,0 +1,24 @@
+<div class="d-flex flex-wrap">
+  <div
+    *ngFor="let heroes of heroesAll; let idx = index"
+    class="custom-card"
+    style="width: 10rem"
+    [@hoverAnimation]="hoverState[idx]"
+    (mouseenter)="onMouseEnter(idx)"
+    (mouseleave)="onMouseLeave(idx)"
+  >
+    <img
+      [src]="'assets/images/' + heroes.id + '.jpg'"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ heroes.superhero }}</h5>
+
+      <img />
+      <p class="card-text">{{ heroes.first_appearance }}</p>
+
+      <a href="#" class="btn btn-primary boton">Go somewhere</a>
+    </div>
+  </div>
+</div>
